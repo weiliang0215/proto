@@ -1,0 +1,67 @@
+// 声明 proto 语法版本，固定值
+syntax = "proto3";
+
+// 生成 golang 代码后的包名
+option go_package = ".;proto";
+
+// 定义 Greet 服务
+service User {
+  // 获取用户列表
+  rpc GetUserList(PageInfo) returns (UserListResponse);
+  // 根据手机号获取用户信息
+  rpc GetUserInfoByMobile(GetUserInfoByRequest) returns (UserInfoResponse);
+  // 检查密码
+  rpc CheckPassword(CheckPasswordRequest) returns (CheckPasswordResponse);
+  // 用户注册
+  rpc CreateUser(CreateUserRequest) returns (UserInfoResponse);
+  // 用户修改信息
+  rpc UpdateUser(UpdateUserRequest) returns (UserInfoResponse);
+
+}
+
+
+message PageInfo {
+  uint32 page = 1; // 当前页
+  uint32 limit = 2;// 每页展示条数
+}
+
+message UserInfoResponse {
+  int32 id = 1;
+  string username = 2;
+  string password = 3;
+  string mobile = 4;
+  string email = 5;
+  int64 age = 6;
+  int32 sex = 7;
+}
+
+message UserListResponse{
+  int32 total = 1; //总条数
+  repeated UserInfoResponse data = 2; // 用户列表
+}
+
+message GetUserInfoByRequest {
+  string mobile = 1; // 用户手机号
+}
+
+message CheckPasswordRequest {
+  string password = 1; // 明文密码
+  string ciphertextPassword = 2; // 密文密码
+}
+
+message CheckPasswordResponse{
+  bool success = 1;
+}
+
+message CreateUserRequest {
+  string username = 1; // 用户名
+  string password = 2; // 密码
+  string mobile = 3; // 手机号
+}
+
+message UpdateUserRequest {
+  int32 id = 1; // 主键id(判断条件)
+  string email = 2; // 邮箱
+  int64 age = 3; // 年龄
+  int32 sex = 4; // 性别
+}
