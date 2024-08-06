@@ -1,0 +1,32 @@
+// 声明 proto 语法版本，固定值
+syntax = "proto3";
+
+// 生成 golang 代码后的包名
+option go_package = ".;proto";
+
+// 定义 Inventory 服务
+service Inventory {
+  // 设置库存
+  rpc SetInv(GoodsInvInfo) returns(Empty);
+  //获取库存信息
+  rpc  InvDetail(GoodsInvInfo) returns (GoodsInvInfo);
+
+  //扣减库存
+  rpc Sell(SellInfo) returns (Empty);
+
+  //归还库存
+  rpc ReBack(SellInfo) returns (Empty);
+}
+
+message GoodsInvInfo {
+  int32 goodsId = 1;
+  int32 num  = 2;
+}
+
+message Empty {
+
+}
+message SellInfo {
+  repeated GoodsInvInfo goodsInfo = 1;
+  string orderSn = 2;
+}
