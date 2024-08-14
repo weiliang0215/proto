@@ -21,12 +21,12 @@ type OrderClient interface {
 	// 购物车
 	CreateCartItem(ctx context.Context, in *CartItemRequest, opts ...grpc.CallOption) (*ShopCartInfoResponse, error)
 	CartItemList(ctx context.Context, in *UserInfo, opts ...grpc.CallOption) (*ShopCartList, error)
-	UpdateCartItem(ctx context.Context, in *CartItemRequest, opts ...grpc.CallOption) (*Empty, error)
+	UpdateCartItem(ctx context.Context, in *CartItemRequest, opts ...grpc.CallOption) (*OrderEmpty, error)
 	// 订单
 	Create(ctx context.Context, in *OrderRequest, opts ...grpc.CallOption) (*OrderInfoResponse, error)
 	OrderList(ctx context.Context, in *OrderFilterRequest, opts ...grpc.CallOption) (*OrderListResponse, error)
 	OrderDetail(ctx context.Context, in *OrderRequest, opts ...grpc.CallOption) (*OrderInfoDetailResponse, error)
-	UpdateOrder(ctx context.Context, in *UpdateOrderInfo, opts ...grpc.CallOption) (*Empty, error)
+	UpdateOrder(ctx context.Context, in *UpdateOrderInfo, opts ...grpc.CallOption) (*OrderEmpty, error)
 }
 
 type orderClient struct {
@@ -55,8 +55,8 @@ func (c *orderClient) CartItemList(ctx context.Context, in *UserInfo, opts ...gr
 	return out, nil
 }
 
-func (c *orderClient) UpdateCartItem(ctx context.Context, in *CartItemRequest, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
+func (c *orderClient) UpdateCartItem(ctx context.Context, in *CartItemRequest, opts ...grpc.CallOption) (*OrderEmpty, error) {
+	out := new(OrderEmpty)
 	err := c.cc.Invoke(ctx, "/Order/UpdateCartItem", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -91,8 +91,8 @@ func (c *orderClient) OrderDetail(ctx context.Context, in *OrderRequest, opts ..
 	return out, nil
 }
 
-func (c *orderClient) UpdateOrder(ctx context.Context, in *UpdateOrderInfo, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
+func (c *orderClient) UpdateOrder(ctx context.Context, in *UpdateOrderInfo, opts ...grpc.CallOption) (*OrderEmpty, error) {
+	out := new(OrderEmpty)
 	err := c.cc.Invoke(ctx, "/Order/UpdateOrder", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -107,12 +107,12 @@ type OrderServer interface {
 	// 购物车
 	CreateCartItem(context.Context, *CartItemRequest) (*ShopCartInfoResponse, error)
 	CartItemList(context.Context, *UserInfo) (*ShopCartList, error)
-	UpdateCartItem(context.Context, *CartItemRequest) (*Empty, error)
+	UpdateCartItem(context.Context, *CartItemRequest) (*OrderEmpty, error)
 	// 订单
 	Create(context.Context, *OrderRequest) (*OrderInfoResponse, error)
 	OrderList(context.Context, *OrderFilterRequest) (*OrderListResponse, error)
 	OrderDetail(context.Context, *OrderRequest) (*OrderInfoDetailResponse, error)
-	UpdateOrder(context.Context, *UpdateOrderInfo) (*Empty, error)
+	UpdateOrder(context.Context, *UpdateOrderInfo) (*OrderEmpty, error)
 	mustEmbedUnimplementedOrderServer()
 }
 
@@ -126,7 +126,7 @@ func (UnimplementedOrderServer) CreateCartItem(context.Context, *CartItemRequest
 func (UnimplementedOrderServer) CartItemList(context.Context, *UserInfo) (*ShopCartList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CartItemList not implemented")
 }
-func (UnimplementedOrderServer) UpdateCartItem(context.Context, *CartItemRequest) (*Empty, error) {
+func (UnimplementedOrderServer) UpdateCartItem(context.Context, *CartItemRequest) (*OrderEmpty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateCartItem not implemented")
 }
 func (UnimplementedOrderServer) Create(context.Context, *OrderRequest) (*OrderInfoResponse, error) {
@@ -138,7 +138,7 @@ func (UnimplementedOrderServer) OrderList(context.Context, *OrderFilterRequest) 
 func (UnimplementedOrderServer) OrderDetail(context.Context, *OrderRequest) (*OrderInfoDetailResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method OrderDetail not implemented")
 }
-func (UnimplementedOrderServer) UpdateOrder(context.Context, *UpdateOrderInfo) (*Empty, error) {
+func (UnimplementedOrderServer) UpdateOrder(context.Context, *UpdateOrderInfo) (*OrderEmpty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateOrder not implemented")
 }
 func (UnimplementedOrderServer) mustEmbedUnimplementedOrderServer() {}

@@ -9,13 +9,13 @@ service Order {
   // 购物车
   rpc CreateCartItem(CartItemRequest) returns(ShopCartInfoResponse); //添加商品到购物车
   rpc CartItemList(UserInfo) returns(ShopCartList); //购物车列表
-  rpc UpdateCartItem(CartItemRequest) returns(Empty); //修改购物车
+  rpc UpdateCartItem(CartItemRequest) returns(OrderEmpty); //修改购物车
 
   //订单
   rpc Create(OrderRequest) returns (OrderInfoResponse); //创建订单
   rpc OrderList(OrderFilterRequest) returns (OrderListResponse); // 订单列表
   rpc OrderDetail(OrderRequest) returns (OrderInfoDetailResponse); // 订单详情
-  rpc UpdateOrder(UpdateOrderInfo) returns (Empty); // 修改订单状态
+  rpc UpdateOrder(UpdateOrderInfo) returns (OrderEmpty); // 修改订单状态
 
 }
 
@@ -90,7 +90,7 @@ message UserInfo {
   int32 id = 1;
 }
 
-message Empty {}
+message OrderEmpty {}
 
 // 添加购物车
 message CartItemRequest {
