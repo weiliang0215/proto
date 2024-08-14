@@ -1,0 +1,113 @@
+// 声明 proto 语法版本，固定值
+syntax = "proto3";
+
+// 生成 golang 代码后的包名
+option go_package = ".;order";
+
+// 定义 Order 服务
+service Order {
+  // 购物车
+  rpc CreateCartItem(CartItemRequest) returns(ShopCartInfoResponse); //添加商品到购物车
+  rpc CartItemList(UserInfo) returns(ShopCartList); //购物车列表
+  rpc UpdateCartItem(CartItemRequest) returns(Empty); //修改购物车
+
+  //订单
+  rpc Create(OrderRequest) returns (OrderInfoResponse); //创建订单
+  rpc OrderList(OrderFilterRequest) returns (OrderListResponse); // 订单列表
+  rpc OrderDetail(OrderRequest) returns (OrderInfoDetailResponse); // 订单详情
+  rpc UpdateOrder(UpdateOrderInfo) returns (Empty); // 修改订单状态
+
+}
+
+//订单详情
+message OrderInfoDetailResponse {
+  OrderInfoResponse orderInfo = 1;
+  repeated OrderItemResponse goods = 2;
+}
+
+
+message OrderItemResponse {
+  int32 id = 1;
+  int32 orderId = 2;
+  int32 goodsId = 3;
+  string goodsName = 4;
+  string goodsImage = 5;
+  float goodsPrice = 6;
+  int32 nums = 7;
+}
+
+message UpdateOrderInfo {
+  int32 id = 1;
+  string payType = 2;
+  string status = 3;
+  string tradeNo = 4;
+}
+
+message OrderFilterRequest {
+  int32 userId = 1;
+  int32 page = 2;
+  int32 limit = 3;
+  enum PayTypes {
+    YVE  = 0;
+    ALIPAY = 1;
+    WXPAY = 2;
+  }
+  PayTypes   payType  = 4;
+  string status = 5;
+}
+
+message OrderListResponse {
+  int32 total = 1;
+  repeated OrderInfoResponse data = 2;
+}
+
+//订单请求体
+message OrderRequest {
+  int32  id      = 1;
+  int32  userId  = 2;
+  string address = 3;
+  string name    = 4;
+  string mobile  = 5;
+  string post    = 6;
+}
+
+//返回订单的信息
+message OrderInfoResponse {
+  int32  id      = 1;
+  int32  userId  = 2;
+  string orderSn = 3;
+  string payType = 4;
+  string status  = 5;
+  string post    = 6;
+  float  total   = 7;
+  string address = 8;
+  string name    = 9;
+  string mobile  = 10;
+}
+
+// 根据登录用户的id去查询购物车列表
+message UserInfo {
+  int32 id = 1;
+}
+
+message Empty {}
+
+// 添加购物车
+message CartItemRequest {
+  int32 userId = 1;
+  int32 goodId = 2;
+  int32 nums = 3;
+}
+
+message ShopCartInfoResponse {
+  int32 id = 1;
+  int32 userId = 2;
+  int32 goodId = 3;
+  int32 nums   = 4;
+  bool checked = 5;
+}
+
+message ShopCartList {
+  int32 total = 1;
+  repeated ShopCartInfoResponse data = 2;
+}
