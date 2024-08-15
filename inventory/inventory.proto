@@ -7,15 +7,15 @@ option go_package = ".;proto";
 // 定义 Inventory 服务
 service Inventory {
   // 设置库存
-  rpc SetInv(GoodsInvInfo) returns(Empty);
+  rpc SetInv(GoodsInvInfo) returns(InvEmpty);
   //获取库存信息
   rpc  InvDetail(GoodsInvInfo) returns (GoodsInvInfo);
 
   //扣减库存
-  rpc Sell(SellInfo) returns (Empty);
+  rpc Sell(SellInfo) returns (InvEmpty);
 
   //归还库存
-  rpc ReBack(SellInfo) returns (Empty);
+  rpc ReBack(SellInfo) returns (InvEmpty);
 }
 
 message GoodsInvInfo {
@@ -23,7 +23,7 @@ message GoodsInvInfo {
   int32 num  = 2;
 }
 
-message Empty {
+message InvEmpty {
 
 }
 message SellInfo {

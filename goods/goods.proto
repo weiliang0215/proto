@@ -19,7 +19,7 @@ service Goods {
   rpc CreateGoods(CreateGoodsInfo) returns (GoodsInfoResponse);
 
   //修改商品
-  rpc UpdateGoods(CreateGoodsInfo) returns (Empty);
+  rpc UpdateGoods(CreateGoodsInfo) returns (GoodsEmpty);
 
   //商品详情
   rpc GetGoodsDetail(GoodInfoRequest) returns(GoodsInfoResponse);
@@ -27,13 +27,13 @@ service Goods {
 
   //商品分类
   //获取所有的分类
-  rpc GetAllCategoryList(Empty) returns(CategoryListResponse);
+  rpc GetAllCategoryList(GoodsEmpty) returns(CategoryListResponse);
   //新建分类信息
   rpc CreateCategory(CategoryInfoRequest) returns(CategoryInfoResponse);
   //删除分类
-  rpc DeleteCategory(DeleteCategoryRequest) returns(Empty);
+  rpc DeleteCategory(DeleteCategoryRequest) returns(GoodsEmpty);
   //修改分类信息
-  rpc UpdateCategory(CategoryInfoRequest) returns(Empty);
+  rpc UpdateCategory(CategoryInfoRequest) returns(GoodsEmpty);
 
 
   //品牌
@@ -42,20 +42,20 @@ service Goods {
   //新建品牌信息
   rpc CreateBrand(BrandRequest) returns(BrandInfoResponse);
   //删除品牌
-  rpc DeleteBrand(BrandRequest) returns(Empty);
+  rpc DeleteBrand(BrandRequest) returns(GoodsEmpty);
   //修改品牌信息
-  rpc UpdateBrand(BrandRequest) returns(Empty);
+  rpc UpdateBrand(BrandRequest) returns(GoodsEmpty);
 
 
   //轮播图
   //获取轮播列表信息
-  rpc BannerList(Empty) returns(BannerListResponse);
+  rpc BannerList(GoodsEmpty) returns(BannerListResponse);
   //添加banner图
   rpc CreateBanner(BannerRequest) returns(BannerResponse);
   //删除轮播图
-  rpc DeleteBanner(BannerRequest) returns(Empty);
+  rpc DeleteBanner(BannerRequest) returns(GoodsEmpty);
   //修改轮播图
-  rpc UpdateBanner(BannerRequest) returns(Empty);
+  rpc UpdateBanner(BannerRequest) returns(GoodsEmpty);
 
   //品牌分类
   //获取品牌分类列表
@@ -67,13 +67,13 @@ service Goods {
   //添加分类品牌
   rpc CreateCategoryBrand(CategoryBrandRequest) returns(CategoryBrandResponse);
   //删除分类品牌
-  rpc DeleteCategoryBrand(CategoryBrandRequest) returns(Empty);
+  rpc DeleteCategoryBrand(CategoryBrandRequest) returns(GoodsEmpty);
   //修改分类品牌
-  rpc UpdateCategoryBrand(CategoryBrandRequest) returns(Empty);
+  rpc UpdateCategoryBrand(CategoryBrandRequest) returns(GoodsEmpty);
 }
 
 
-message Empty{}
+message GoodsEmpty{}
 
 //商品列表请求消息体
 message GoodsFilterRequest  {
