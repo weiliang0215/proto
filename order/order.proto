@@ -77,7 +77,7 @@ message OrderInfoResponse {
   int32  id      = 1;
   int32  userId  = 2;
   string orderSn = 3;
-  string payType = 4;
+  int32  payType = 4;
   string status  = 5;
   string post    = 6;
   float  total   = 7;
