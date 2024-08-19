@@ -41,7 +41,8 @@ message UpdateOrderInfo {
   int32 id = 1;
   string payType = 2;
   string status = 3;
-  string tradeNo = 4;
+  string tradeNo = 4; //支付宝流水好
+  string orderSn = 5;//系统订单号
 }
 
 message OrderFilterRequest {
@@ -70,6 +71,7 @@ message OrderRequest {
   string name    = 4;
   string mobile  = 5;
   string post    = 6;
+  string orderSn = 7;
 }
 
 //返回订单的信息
