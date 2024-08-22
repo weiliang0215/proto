@@ -13,6 +13,12 @@ service Inventory {
 
   //扣减库存
   rpc Sell(SellInfo) returns (InvEmpty);
+  // 尝试扣减库存
+  rpc TrySell(SellInfo) returns (InvEmpty);
+  // 确定扣减库存
+  rpc ConfirmSell(SellInfo) returns (InvEmpty);
+  // 取消扣减库存
+  rpc CancelSell(SellInfo) returns (InvEmpty);
 
   //归还库存
   rpc ReBack(SellInfo) returns (InvEmpty);
