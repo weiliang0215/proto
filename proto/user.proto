@@ -17,6 +17,25 @@ service User {
   // 用户修改信息
   rpc UpdateUser(UpdateUserRequest) returns (UserInfoResponse);
 
+
+
+  // 获取用户信息
+  rpc GetUser(GetUserReq) returns (GetUserRes);
+
+}
+
+message GetUserReq {
+  int32 id = 1;
+}
+message GetUserRes {
+  int32   id      = 1;
+  string  username  = 2;
+  string  mobile  = 3;
+  string  email = 4;
+  int64   age = 5;
+  int32   sex = 6;
+  int32   pid = 7;
+  float commission  = 8;
 }
 
 
