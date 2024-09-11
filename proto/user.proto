@@ -335,7 +335,7 @@ message RoleInfo {
 
 
 message GetUserReq {
-  int32 id = 1;
+  int32 pid = 1;
 }
 message GetUserRes {
   int32   id      = 1;
@@ -345,7 +345,8 @@ message GetUserRes {
   int64   age = 5;
   int32   sex = 6;
   int32   pid = 7;
-  float   commission  = 8;
+  float   rote = 8;
+  float   commission  = 9;
 }
 
 
