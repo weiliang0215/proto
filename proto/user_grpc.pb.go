@@ -30,6 +30,72 @@ type UserClient interface {
 	UpdateUser(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UserInfoResponse, error)
 	// 获取用户信息
 	GetUser(ctx context.Context, in *GetUserReq, opts ...grpc.CallOption) (*GetUserRes, error)
+	// 角色
+	// 新增角色
+	CreateRole(ctx context.Context, in *CreateRoleReq, opts ...grpc.CallOption) (*RoleInfo, error)
+	// 删除角色
+	DeleteRole(ctx context.Context, in *DeleteRoleReq, opts ...grpc.CallOption) (*Empty, error)
+	// 修改角色
+	UpdateRole(ctx context.Context, in *UpdateRoleReq, opts ...grpc.CallOption) (*Empty, error)
+	// 获取角色列表
+	GetRoleList(ctx context.Context, in *GetRoleListReq, opts ...grpc.CallOption) (*GetRoleListRes, error)
+	// 获取角色信息
+	GetRoleInfo(ctx context.Context, in *GetRoleInfoReq, opts ...grpc.CallOption) (*RoleInfo, error)
+	// 用户角色
+	// 新增用户角色
+	CreateUserRole(ctx context.Context, in *CreateUserRoleReq, opts ...grpc.CallOption) (*UserRoleInfo, error)
+	// 删除用户角色
+	DeleteUserRole(ctx context.Context, in *DeleteUserRoleReq, opts ...grpc.CallOption) (*Empty, error)
+	// 修改用户角色
+	UpdateUserRole(ctx context.Context, in *UpdateUserRoleReq, opts ...grpc.CallOption) (*Empty, error)
+	// 获取用户角色列表
+	GetUserRoleList(ctx context.Context, in *GetUserRoleListReq, opts ...grpc.CallOption) (*GetUserRoleListRes, error)
+	// 获取用户角色信息
+	GetUserRoleInfo(ctx context.Context, in *GetUserRoleInfoReq, opts ...grpc.CallOption) (*UserRoleInfo, error)
+	// 菜单
+	// 新增菜单
+	CreateMenu(ctx context.Context, in *CreateMenuReq, opts ...grpc.CallOption) (*MenuInfo, error)
+	// 删除菜单
+	DeleteMenu(ctx context.Context, in *DeleteMenuReq, opts ...grpc.CallOption) (*Empty, error)
+	// 修改菜单
+	UpdateMenu(ctx context.Context, in *UpdateMenuReq, opts ...grpc.CallOption) (*Empty, error)
+	// 获取菜单列表
+	GetMenuList(ctx context.Context, in *GetMenuListReq, opts ...grpc.CallOption) (*GetMenuListRes, error)
+	// 获取菜单信息
+	GetMenuInfo(ctx context.Context, in *GetMenuInfoReq, opts ...grpc.CallOption) (*MenuInfo, error)
+	// 角色菜单
+	// 新增角色菜单
+	CreateRoleMenu(ctx context.Context, in *CreateRoleMenuReq, opts ...grpc.CallOption) (*RoleMenuInfo, error)
+	// 删除角色菜单
+	DeleteRoleMenu(ctx context.Context, in *DeleteRoleMenuReq, opts ...grpc.CallOption) (*Empty, error)
+	// 修改角色菜单
+	UpdateRoleMenu(ctx context.Context, in *UpdateRoleMenuReq, opts ...grpc.CallOption) (*Empty, error)
+	// 获取角色菜单列表
+	GetRoleMenuList(ctx context.Context, in *GetRoleMenuListReq, opts ...grpc.CallOption) (*GetRoleMenuListRes, error)
+	// 获取角色菜单信息
+	GetRoleMenuInfo(ctx context.Context, in *GetRoleMenuInfoReq, opts ...grpc.CallOption) (*RoleMenuInfo, error)
+	// 权限
+	// 新增权限
+	CreatePower(ctx context.Context, in *CreatePowerReq, opts ...grpc.CallOption) (*PowerInfo, error)
+	// 删除权限
+	DeletePower(ctx context.Context, in *DeletePowerReq, opts ...grpc.CallOption) (*Empty, error)
+	// 修改权限
+	UpdatePower(ctx context.Context, in *UpdatePowerReq, opts ...grpc.CallOption) (*Empty, error)
+	// 获取权限列表
+	GetPowerList(ctx context.Context, in *GetPowerListReq, opts ...grpc.CallOption) (*GetPowerListRes, error)
+	// 获取权限信息
+	GetPowerInfo(ctx context.Context, in *GetPowerInfoReq, opts ...grpc.CallOption) (*PowerInfo, error)
+	// 菜单权限
+	// 新增菜单权限
+	CreateMenuPower(ctx context.Context, in *CreateMenuPowerReq, opts ...grpc.CallOption) (*MenuPowerInfo, error)
+	// 删除菜单权限
+	DeleteMenuPower(ctx context.Context, in *DeleteMenuPowerReq, opts ...grpc.CallOption) (*Empty, error)
+	// 修改菜单权限
+	UpdateMenuPower(ctx context.Context, in *UpdateMenuPowerReq, opts ...grpc.CallOption) (*Empty, error)
+	// 获取菜单权限列表
+	GetMenuPowerList(ctx context.Context, in *GetMenuPowerListReq, opts ...grpc.CallOption) (*GetMenuPowerListRes, error)
+	// 获取菜单权限信息
+	GetMenuPowerInfo(ctx context.Context, in *GetMenuPowerInfoReq, opts ...grpc.CallOption) (*MenuPowerInfo, error)
 }
 
 type userClient struct {
@@ -94,6 +160,276 @@ func (c *userClient) GetUser(ctx context.Context, in *GetUserReq, opts ...grpc.C
 	return out, nil
 }
 
+func (c *userClient) CreateRole(ctx context.Context, in *CreateRoleReq, opts ...grpc.CallOption) (*RoleInfo, error) {
+	out := new(RoleInfo)
+	err := c.cc.Invoke(ctx, "/User/CreateRole", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) DeleteRole(ctx context.Context, in *DeleteRoleReq, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/User/DeleteRole", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) UpdateRole(ctx context.Context, in *UpdateRoleReq, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/User/UpdateRole", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) GetRoleList(ctx context.Context, in *GetRoleListReq, opts ...grpc.CallOption) (*GetRoleListRes, error) {
+	out := new(GetRoleListRes)
+	err := c.cc.Invoke(ctx, "/User/GetRoleList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) GetRoleInfo(ctx context.Context, in *GetRoleInfoReq, opts ...grpc.CallOption) (*RoleInfo, error) {
+	out := new(RoleInfo)
+	err := c.cc.Invoke(ctx, "/User/GetRoleInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) CreateUserRole(ctx context.Context, in *CreateUserRoleReq, opts ...grpc.CallOption) (*UserRoleInfo, error) {
+	out := new(UserRoleInfo)
+	err := c.cc.Invoke(ctx, "/User/CreateUserRole", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) DeleteUserRole(ctx context.Context, in *DeleteUserRoleReq, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/User/DeleteUserRole", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) UpdateUserRole(ctx context.Context, in *UpdateUserRoleReq, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/User/UpdateUserRole", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) GetUserRoleList(ctx context.Context, in *GetUserRoleListReq, opts ...grpc.CallOption) (*GetUserRoleListRes, error) {
+	out := new(GetUserRoleListRes)
+	err := c.cc.Invoke(ctx, "/User/GetUserRoleList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) GetUserRoleInfo(ctx context.Context, in *GetUserRoleInfoReq, opts ...grpc.CallOption) (*UserRoleInfo, error) {
+	out := new(UserRoleInfo)
+	err := c.cc.Invoke(ctx, "/User/GetUserRoleInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) CreateMenu(ctx context.Context, in *CreateMenuReq, opts ...grpc.CallOption) (*MenuInfo, error) {
+	out := new(MenuInfo)
+	err := c.cc.Invoke(ctx, "/User/CreateMenu", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) DeleteMenu(ctx context.Context, in *DeleteMenuReq, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/User/DeleteMenu", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) UpdateMenu(ctx context.Context, in *UpdateMenuReq, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/User/UpdateMenu", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) GetMenuList(ctx context.Context, in *GetMenuListReq, opts ...grpc.CallOption) (*GetMenuListRes, error) {
+	out := new(GetMenuListRes)
+	err := c.cc.Invoke(ctx, "/User/GetMenuList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) GetMenuInfo(ctx context.Context, in *GetMenuInfoReq, opts ...grpc.CallOption) (*MenuInfo, error) {
+	out := new(MenuInfo)
+	err := c.cc.Invoke(ctx, "/User/GetMenuInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) CreateRoleMenu(ctx context.Context, in *CreateRoleMenuReq, opts ...grpc.CallOption) (*RoleMenuInfo, error) {
+	out := new(RoleMenuInfo)
+	err := c.cc.Invoke(ctx, "/User/CreateRoleMenu", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) DeleteRoleMenu(ctx context.Context, in *DeleteRoleMenuReq, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/User/DeleteRoleMenu", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) UpdateRoleMenu(ctx context.Context, in *UpdateRoleMenuReq, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/User/UpdateRoleMenu", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) GetRoleMenuList(ctx context.Context, in *GetRoleMenuListReq, opts ...grpc.CallOption) (*GetRoleMenuListRes, error) {
+	out := new(GetRoleMenuListRes)
+	err := c.cc.Invoke(ctx, "/User/GetRoleMenuList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) GetRoleMenuInfo(ctx context.Context, in *GetRoleMenuInfoReq, opts ...grpc.CallOption) (*RoleMenuInfo, error) {
+	out := new(RoleMenuInfo)
+	err := c.cc.Invoke(ctx, "/User/GetRoleMenuInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) CreatePower(ctx context.Context, in *CreatePowerReq, opts ...grpc.CallOption) (*PowerInfo, error) {
+	out := new(PowerInfo)
+	err := c.cc.Invoke(ctx, "/User/CreatePower", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) DeletePower(ctx context.Context, in *DeletePowerReq, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/User/DeletePower", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) UpdatePower(ctx context.Context, in *UpdatePowerReq, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/User/UpdatePower", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) GetPowerList(ctx context.Context, in *GetPowerListReq, opts ...grpc.CallOption) (*GetPowerListRes, error) {
+	out := new(GetPowerListRes)
+	err := c.cc.Invoke(ctx, "/User/GetPowerList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) GetPowerInfo(ctx context.Context, in *GetPowerInfoReq, opts ...grpc.CallOption) (*PowerInfo, error) {
+	out := new(PowerInfo)
+	err := c.cc.Invoke(ctx, "/User/GetPowerInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) CreateMenuPower(ctx context.Context, in *CreateMenuPowerReq, opts ...grpc.CallOption) (*MenuPowerInfo, error) {
+	out := new(MenuPowerInfo)
+	err := c.cc.Invoke(ctx, "/User/CreateMenuPower", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) DeleteMenuPower(ctx context.Context, in *DeleteMenuPowerReq, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/User/DeleteMenuPower", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) UpdateMenuPower(ctx context.Context, in *UpdateMenuPowerReq, opts ...grpc.CallOption) (*Empty, error) {
+	out := new(Empty)
+	err := c.cc.Invoke(ctx, "/User/UpdateMenuPower", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) GetMenuPowerList(ctx context.Context, in *GetMenuPowerListReq, opts ...grpc.CallOption) (*GetMenuPowerListRes, error) {
+	out := new(GetMenuPowerListRes)
+	err := c.cc.Invoke(ctx, "/User/GetMenuPowerList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userClient) GetMenuPowerInfo(ctx context.Context, in *GetMenuPowerInfoReq, opts ...grpc.CallOption) (*MenuPowerInfo, error) {
+	out := new(MenuPowerInfo)
+	err := c.cc.Invoke(ctx, "/User/GetMenuPowerInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServer is the server API for User service.
 // All implementations must embed UnimplementedUserServer
 // for forward compatibility
@@ -110,6 +446,72 @@ type UserServer interface {
 	UpdateUser(context.Context, *UpdateUserRequest) (*UserInfoResponse, error)
 	// 获取用户信息
 	GetUser(context.Context, *GetUserReq) (*GetUserRes, error)
+	// 角色
+	// 新增角色
+	CreateRole(context.Context, *CreateRoleReq) (*RoleInfo, error)
+	// 删除角色
+	DeleteRole(context.Context, *DeleteRoleReq) (*Empty, error)
+	// 修改角色
+	UpdateRole(context.Context, *UpdateRoleReq) (*Empty, error)
+	// 获取角色列表
+	GetRoleList(context.Context, *GetRoleListReq) (*GetRoleListRes, error)
+	// 获取角色信息
+	GetRoleInfo(context.Context, *GetRoleInfoReq) (*RoleInfo, error)
+	// 用户角色
+	// 新增用户角色
+	CreateUserRole(context.Context, *CreateUserRoleReq) (*UserRoleInfo, error)
+	// 删除用户角色
+	DeleteUserRole(context.Context, *DeleteUserRoleReq) (*Empty, error)
+	// 修改用户角色
+	UpdateUserRole(context.Context, *UpdateUserRoleReq) (*Empty, error)
+	// 获取用户角色列表
+	GetUserRoleList(context.Context, *GetUserRoleListReq) (*GetUserRoleListRes, error)
+	// 获取用户角色信息
+	GetUserRoleInfo(context.Context, *GetUserRoleInfoReq) (*UserRoleInfo, error)
+	// 菜单
+	// 新增菜单
+	CreateMenu(context.Context, *CreateMenuReq) (*MenuInfo, error)
+	// 删除菜单
+	DeleteMenu(context.Context, *DeleteMenuReq) (*Empty, error)
+	// 修改菜单
+	UpdateMenu(context.Context, *UpdateMenuReq) (*Empty, error)
+	// 获取菜单列表
+	GetMenuList(context.Context, *GetMenuListReq) (*GetMenuListRes, error)
+	// 获取菜单信息
+	GetMenuInfo(context.Context, *GetMenuInfoReq) (*MenuInfo, error)
+	// 角色菜单
+	// 新增角色菜单
+	CreateRoleMenu(context.Context, *CreateRoleMenuReq) (*RoleMenuInfo, error)
+	// 删除角色菜单
+	DeleteRoleMenu(context.Context, *DeleteRoleMenuReq) (*Empty, error)
+	// 修改角色菜单
+	UpdateRoleMenu(context.Context, *UpdateRoleMenuReq) (*Empty, error)
+	// 获取角色菜单列表
+	GetRoleMenuList(context.Context, *GetRoleMenuListReq) (*GetRoleMenuListRes, error)
+	// 获取角色菜单信息
+	GetRoleMenuInfo(context.Context, *GetRoleMenuInfoReq) (*RoleMenuInfo, error)
+	// 权限
+	// 新增权限
+	CreatePower(context.Context, *CreatePowerReq) (*PowerInfo, error)
+	// 删除权限
+	DeletePower(context.Context, *DeletePowerReq) (*Empty, error)
+	// 修改权限
+	UpdatePower(context.Context, *UpdatePowerReq) (*Empty, error)
+	// 获取权限列表
+	GetPowerList(context.Context, *GetPowerListReq) (*GetPowerListRes, error)
+	// 获取权限信息
+	GetPowerInfo(context.Context, *GetPowerInfoReq) (*PowerInfo, error)
+	// 菜单权限
+	// 新增菜单权限
+	CreateMenuPower(context.Context, *CreateMenuPowerReq) (*MenuPowerInfo, error)
+	// 删除菜单权限
+	DeleteMenuPower(context.Context, *DeleteMenuPowerReq) (*Empty, error)
+	// 修改菜单权限
+	UpdateMenuPower(context.Context, *UpdateMenuPowerReq) (*Empty, error)
+	// 获取菜单权限列表
+	GetMenuPowerList(context.Context, *GetMenuPowerListReq) (*GetMenuPowerListRes, error)
+	// 获取菜单权限信息
+	GetMenuPowerInfo(context.Context, *GetMenuPowerInfoReq) (*MenuPowerInfo, error)
 	mustEmbedUnimplementedUserServer()
 }
 
@@ -134,6 +536,96 @@ func (UnimplementedUserServer) UpdateUser(context.Context, *UpdateUserRequest) (
 }
 func (UnimplementedUserServer) GetUser(context.Context, *GetUserReq) (*GetUserRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
+}
+func (UnimplementedUserServer) CreateRole(context.Context, *CreateRoleReq) (*RoleInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateRole not implemented")
+}
+func (UnimplementedUserServer) DeleteRole(context.Context, *DeleteRoleReq) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteRole not implemented")
+}
+func (UnimplementedUserServer) UpdateRole(context.Context, *UpdateRoleReq) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateRole not implemented")
+}
+func (UnimplementedUserServer) GetRoleList(context.Context, *GetRoleListReq) (*GetRoleListRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRoleList not implemented")
+}
+func (UnimplementedUserServer) GetRoleInfo(context.Context, *GetRoleInfoReq) (*RoleInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRoleInfo not implemented")
+}
+func (UnimplementedUserServer) CreateUserRole(context.Context, *CreateUserRoleReq) (*UserRoleInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateUserRole not implemented")
+}
+func (UnimplementedUserServer) DeleteUserRole(context.Context, *DeleteUserRoleReq) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteUserRole not implemented")
+}
+func (UnimplementedUserServer) UpdateUserRole(context.Context, *UpdateUserRoleReq) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserRole not implemented")
+}
+func (UnimplementedUserServer) GetUserRoleList(context.Context, *GetUserRoleListReq) (*GetUserRoleListRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserRoleList not implemented")
+}
+func (UnimplementedUserServer) GetUserRoleInfo(context.Context, *GetUserRoleInfoReq) (*UserRoleInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserRoleInfo not implemented")
+}
+func (UnimplementedUserServer) CreateMenu(context.Context, *CreateMenuReq) (*MenuInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateMenu not implemented")
+}
+func (UnimplementedUserServer) DeleteMenu(context.Context, *DeleteMenuReq) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteMenu not implemented")
+}
+func (UnimplementedUserServer) UpdateMenu(context.Context, *UpdateMenuReq) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateMenu not implemented")
+}
+func (UnimplementedUserServer) GetMenuList(context.Context, *GetMenuListReq) (*GetMenuListRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMenuList not implemented")
+}
+func (UnimplementedUserServer) GetMenuInfo(context.Context, *GetMenuInfoReq) (*MenuInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMenuInfo not implemented")
+}
+func (UnimplementedUserServer) CreateRoleMenu(context.Context, *CreateRoleMenuReq) (*RoleMenuInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateRoleMenu not implemented")
+}
+func (UnimplementedUserServer) DeleteRoleMenu(context.Context, *DeleteRoleMenuReq) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteRoleMenu not implemented")
+}
+func (UnimplementedUserServer) UpdateRoleMenu(context.Context, *UpdateRoleMenuReq) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateRoleMenu not implemented")
+}
+func (UnimplementedUserServer) GetRoleMenuList(context.Context, *GetRoleMenuListReq) (*GetRoleMenuListRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRoleMenuList not implemented")
+}
+func (UnimplementedUserServer) GetRoleMenuInfo(context.Context, *GetRoleMenuInfoReq) (*RoleMenuInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRoleMenuInfo not implemented")
+}
+func (UnimplementedUserServer) CreatePower(context.Context, *CreatePowerReq) (*PowerInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePower not implemented")
+}
+func (UnimplementedUserServer) DeletePower(context.Context, *DeletePowerReq) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePower not implemented")
+}
+func (UnimplementedUserServer) UpdatePower(context.Context, *UpdatePowerReq) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePower not implemented")
+}
+func (UnimplementedUserServer) GetPowerList(context.Context, *GetPowerListReq) (*GetPowerListRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPowerList not implemented")
+}
+func (UnimplementedUserServer) GetPowerInfo(context.Context, *GetPowerInfoReq) (*PowerInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPowerInfo not implemented")
+}
+func (UnimplementedUserServer) CreateMenuPower(context.Context, *CreateMenuPowerReq) (*MenuPowerInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateMenuPower not implemented")
+}
+func (UnimplementedUserServer) DeleteMenuPower(context.Context, *DeleteMenuPowerReq) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteMenuPower not implemented")
+}
+func (UnimplementedUserServer) UpdateMenuPower(context.Context, *UpdateMenuPowerReq) (*Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateMenuPower not implemented")
+}
+func (UnimplementedUserServer) GetMenuPowerList(context.Context, *GetMenuPowerListReq) (*GetMenuPowerListRes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMenuPowerList not implemented")
+}
+func (UnimplementedUserServer) GetMenuPowerInfo(context.Context, *GetMenuPowerInfoReq) (*MenuPowerInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMenuPowerInfo not implemented")
 }
 func (UnimplementedUserServer) mustEmbedUnimplementedUserServer() {}
 
@@ -256,6 +748,546 @@ func _User_GetUser_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
+func _User_CreateRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateRoleReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).CreateRole(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/CreateRole",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).CreateRole(ctx, req.(*CreateRoleReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_DeleteRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteRoleReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).DeleteRole(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/DeleteRole",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).DeleteRole(ctx, req.(*DeleteRoleReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_UpdateRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateRoleReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).UpdateRole(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/UpdateRole",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).UpdateRole(ctx, req.(*UpdateRoleReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_GetRoleList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRoleListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).GetRoleList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/GetRoleList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).GetRoleList(ctx, req.(*GetRoleListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_GetRoleInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRoleInfoReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).GetRoleInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/GetRoleInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).GetRoleInfo(ctx, req.(*GetRoleInfoReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_CreateUserRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateUserRoleReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).CreateUserRole(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/CreateUserRole",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).CreateUserRole(ctx, req.(*CreateUserRoleReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_DeleteUserRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteUserRoleReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).DeleteUserRole(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/DeleteUserRole",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).DeleteUserRole(ctx, req.(*DeleteUserRoleReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_UpdateUserRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateUserRoleReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).UpdateUserRole(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/UpdateUserRole",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).UpdateUserRole(ctx, req.(*UpdateUserRoleReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_GetUserRoleList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserRoleListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).GetUserRoleList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/GetUserRoleList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).GetUserRoleList(ctx, req.(*GetUserRoleListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_GetUserRoleInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserRoleInfoReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).GetUserRoleInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/GetUserRoleInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).GetUserRoleInfo(ctx, req.(*GetUserRoleInfoReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_CreateMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateMenuReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).CreateMenu(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/CreateMenu",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).CreateMenu(ctx, req.(*CreateMenuReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_DeleteMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteMenuReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).DeleteMenu(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/DeleteMenu",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).DeleteMenu(ctx, req.(*DeleteMenuReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_UpdateMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateMenuReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).UpdateMenu(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/UpdateMenu",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).UpdateMenu(ctx, req.(*UpdateMenuReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_GetMenuList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMenuListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).GetMenuList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/GetMenuList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).GetMenuList(ctx, req.(*GetMenuListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_GetMenuInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMenuInfoReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).GetMenuInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/GetMenuInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).GetMenuInfo(ctx, req.(*GetMenuInfoReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_CreateRoleMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateRoleMenuReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).CreateRoleMenu(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/CreateRoleMenu",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).CreateRoleMenu(ctx, req.(*CreateRoleMenuReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_DeleteRoleMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteRoleMenuReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).DeleteRoleMenu(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/DeleteRoleMenu",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).DeleteRoleMenu(ctx, req.(*DeleteRoleMenuReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_UpdateRoleMenu_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateRoleMenuReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).UpdateRoleMenu(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/UpdateRoleMenu",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).UpdateRoleMenu(ctx, req.(*UpdateRoleMenuReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_GetRoleMenuList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRoleMenuListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).GetRoleMenuList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/GetRoleMenuList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).GetRoleMenuList(ctx, req.(*GetRoleMenuListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_GetRoleMenuInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetRoleMenuInfoReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).GetRoleMenuInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/GetRoleMenuInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).GetRoleMenuInfo(ctx, req.(*GetRoleMenuInfoReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_CreatePower_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreatePowerReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).CreatePower(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/CreatePower",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).CreatePower(ctx, req.(*CreatePowerReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_DeletePower_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeletePowerReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).DeletePower(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/DeletePower",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).DeletePower(ctx, req.(*DeletePowerReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_UpdatePower_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdatePowerReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).UpdatePower(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/UpdatePower",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).UpdatePower(ctx, req.(*UpdatePowerReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_GetPowerList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPowerListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).GetPowerList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/GetPowerList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).GetPowerList(ctx, req.(*GetPowerListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_GetPowerInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPowerInfoReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).GetPowerInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/GetPowerInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).GetPowerInfo(ctx, req.(*GetPowerInfoReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_CreateMenuPower_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateMenuPowerReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).CreateMenuPower(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/CreateMenuPower",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).CreateMenuPower(ctx, req.(*CreateMenuPowerReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_DeleteMenuPower_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteMenuPowerReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).DeleteMenuPower(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/DeleteMenuPower",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).DeleteMenuPower(ctx, req.(*DeleteMenuPowerReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_UpdateMenuPower_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateMenuPowerReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).UpdateMenuPower(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/UpdateMenuPower",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).UpdateMenuPower(ctx, req.(*UpdateMenuPowerReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_GetMenuPowerList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMenuPowerListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).GetMenuPowerList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/GetMenuPowerList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).GetMenuPowerList(ctx, req.(*GetMenuPowerListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _User_GetMenuPowerInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMenuPowerInfoReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).GetMenuPowerInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/User/GetMenuPowerInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).GetMenuPowerInfo(ctx, req.(*GetMenuPowerInfoReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // User_ServiceDesc is the grpc.ServiceDesc for User service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -286,6 +1318,126 @@ var User_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUser",
 			Handler:    _User_GetUser_Handler,
+		},
+		{
+			MethodName: "CreateRole",
+			Handler:    _User_CreateRole_Handler,
+		},
+		{
+			MethodName: "DeleteRole",
+			Handler:    _User_DeleteRole_Handler,
+		},
+		{
+			MethodName: "UpdateRole",
+			Handler:    _User_UpdateRole_Handler,
+		},
+		{
+			MethodName: "GetRoleList",
+			Handler:    _User_GetRoleList_Handler,
+		},
+		{
+			MethodName: "GetRoleInfo",
+			Handler:    _User_GetRoleInfo_Handler,
+		},
+		{
+			MethodName: "CreateUserRole",
+			Handler:    _User_CreateUserRole_Handler,
+		},
+		{
+			MethodName: "DeleteUserRole",
+			Handler:    _User_DeleteUserRole_Handler,
+		},
+		{
+			MethodName: "UpdateUserRole",
+			Handler:    _User_UpdateUserRole_Handler,
+		},
+		{
+			MethodName: "GetUserRoleList",
+			Handler:    _User_GetUserRoleList_Handler,
+		},
+		{
+			MethodName: "GetUserRoleInfo",
+			Handler:    _User_GetUserRoleInfo_Handler,
+		},
+		{
+			MethodName: "CreateMenu",
+			Handler:    _User_CreateMenu_Handler,
+		},
+		{
+			MethodName: "DeleteMenu",
+			Handler:    _User_DeleteMenu_Handler,
+		},
+		{
+			MethodName: "UpdateMenu",
+			Handler:    _User_UpdateMenu_Handler,
+		},
+		{
+			MethodName: "GetMenuList",
+			Handler:    _User_GetMenuList_Handler,
+		},
+		{
+			MethodName: "GetMenuInfo",
+			Handler:    _User_GetMenuInfo_Handler,
+		},
+		{
+			MethodName: "CreateRoleMenu",
+			Handler:    _User_CreateRoleMenu_Handler,
+		},
+		{
+			MethodName: "DeleteRoleMenu",
+			Handler:    _User_DeleteRoleMenu_Handler,
+		},
+		{
+			MethodName: "UpdateRoleMenu",
+			Handler:    _User_UpdateRoleMenu_Handler,
+		},
+		{
+			MethodName: "GetRoleMenuList",
+			Handler:    _User_GetRoleMenuList_Handler,
+		},
+		{
+			MethodName: "GetRoleMenuInfo",
+			Handler:    _User_GetRoleMenuInfo_Handler,
+		},
+		{
+			MethodName: "CreatePower",
+			Handler:    _User_CreatePower_Handler,
+		},
+		{
+			MethodName: "DeletePower",
+			Handler:    _User_DeletePower_Handler,
+		},
+		{
+			MethodName: "UpdatePower",
+			Handler:    _User_UpdatePower_Handler,
+		},
+		{
+			MethodName: "GetPowerList",
+			Handler:    _User_GetPowerList_Handler,
+		},
+		{
+			MethodName: "GetPowerInfo",
+			Handler:    _User_GetPowerInfo_Handler,
+		},
+		{
+			MethodName: "CreateMenuPower",
+			Handler:    _User_CreateMenuPower_Handler,
+		},
+		{
+			MethodName: "DeleteMenuPower",
+			Handler:    _User_DeleteMenuPower_Handler,
+		},
+		{
+			MethodName: "UpdateMenuPower",
+			Handler:    _User_UpdateMenuPower_Handler,
+		},
+		{
+			MethodName: "GetMenuPowerList",
+			Handler:    _User_GetMenuPowerList_Handler,
+		},
+		{
+			MethodName: "GetMenuPowerInfo",
+			Handler:    _User_GetMenuPowerInfo_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

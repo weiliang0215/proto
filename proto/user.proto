@@ -22,7 +22,317 @@ service User {
   // 获取用户信息
   rpc GetUser(GetUserReq) returns (GetUserRes);
 
+  // 角色
+  // 新增角色
+  rpc CreateRole (CreateRoleReq) returns (RoleInfo);
+  // 删除角色
+  rpc DeleteRole (DeleteRoleReq) returns(Empty);
+  // 修改角色
+  rpc UpdateRole (UpdateRoleReq) returns (Empty);
+  // 获取角色列表
+  rpc GetRoleList (GetRoleListReq) returns (GetRoleListRes);
+  // 获取角色信息
+  rpc GetRoleInfo (GetRoleInfoReq) returns (RoleInfo);
+
+
+  // 用户角色
+  // 新增用户角色
+  rpc CreateUserRole (CreateUserRoleReq) returns (UserRoleInfo);
+  // 删除用户角色
+  rpc DeleteUserRole (DeleteUserRoleReq) returns(Empty);
+  // 修改用户角色
+  rpc UpdateUserRole (UpdateUserRoleReq) returns (Empty);
+  // 获取用户角色列表
+  rpc GetUserRoleList (GetUserRoleListReq) returns (GetUserRoleListRes);
+  // 获取用户角色信息
+  rpc GetUserRoleInfo (GetUserRoleInfoReq) returns (UserRoleInfo);
+
+  // 菜单
+  // 新增菜单
+  rpc CreateMenu (CreateMenuReq) returns (MenuInfo);
+  // 删除菜单
+  rpc DeleteMenu (DeleteMenuReq) returns(Empty);
+  // 修改菜单
+  rpc UpdateMenu (UpdateMenuReq) returns (Empty);
+  // 获取菜单列表
+  rpc GetMenuList (GetMenuListReq) returns (GetMenuListRes);
+  // 获取菜单信息
+  rpc GetMenuInfo (GetMenuInfoReq) returns (MenuInfo);
+
+  // 角色菜单
+  // 新增角色菜单
+  rpc CreateRoleMenu (CreateRoleMenuReq) returns (RoleMenuInfo);
+  // 删除角色菜单
+  rpc DeleteRoleMenu (DeleteRoleMenuReq) returns(Empty);
+  // 修改角色菜单
+  rpc UpdateRoleMenu (UpdateRoleMenuReq) returns (Empty);
+  // 获取角色菜单列表
+  rpc GetRoleMenuList (GetRoleMenuListReq) returns (GetRoleMenuListRes);
+  // 获取角色菜单信息
+  rpc GetRoleMenuInfo (GetRoleMenuInfoReq) returns (RoleMenuInfo);
+
+  // 权限
+  // 新增权限
+  rpc CreatePower (CreatePowerReq) returns (PowerInfo);
+  // 删除权限
+  rpc DeletePower (DeletePowerReq) returns(Empty);
+  // 修改权限
+  rpc UpdatePower (UpdatePowerReq) returns (Empty);
+  // 获取权限列表
+  rpc GetPowerList (GetPowerListReq) returns (GetPowerListRes);
+  // 获取权限信息
+  rpc GetPowerInfo (GetPowerInfoReq) returns (PowerInfo);
+
+  // 菜单权限
+  // 新增菜单权限
+  rpc CreateMenuPower (CreateMenuPowerReq) returns (MenuPowerInfo);
+  // 删除菜单权限
+  rpc DeleteMenuPower (DeleteMenuPowerReq) returns(Empty);
+  // 修改菜单权限
+  rpc UpdateMenuPower (UpdateMenuPowerReq) returns (Empty);
+  // 获取菜单权限列表
+  rpc GetMenuPowerList (GetMenuPowerListReq) returns (GetMenuPowerListRes);
+  // 获取菜单权限信息
+  rpc GetMenuPowerInfo (GetMenuPowerInfoReq) returns (MenuPowerInfo);
+
 }
+message MenuPowerInfo {
+  int32 id = 1;
+  int32 menuId = 2;
+  int32 powerId = 3;
+}
+message GetMenuPowerInfoReq {
+  int32 id = 1;
+  int32 menuId = 2;
+  int32 powerId = 3;
+}
+
+message CreateMenuPowerReq {
+  int32 id = 1;
+  int32 menuId = 2;
+  int32 powerId = 3;
+}
+
+message GetMenuPowerListReq {
+  int32 page = 1;
+  int32 limit = 2;
+  int32 menuId = 3;
+  int32 powerId = 4;
+}
+
+message GetMenuPowerListRes {
+  repeated MenuPowerInfo data = 1;
+  int32 total = 2;
+}
+
+message DeleteMenuPowerReq {
+  int32 id = 1;
+  int32 menuId = 2;
+  int32 powerId = 3;
+}
+
+message UpdateMenuPowerReq {
+  int32 id = 1;
+  int32 menuId = 2;
+  int32 powerId = 3;
+}
+
+message GetPowerInfoReq {
+  int32 id = 1;
+  string powerName = 2;
+}
+
+message GetPowerListReq {
+  int32 page = 1;
+  int32 limit = 2;
+  string powerName = 3;
+}
+
+message GetPowerListRes {
+  repeated PowerInfo data = 1;
+  int32 total = 2;
+}
+
+
+message DeletePowerReq {
+  int32 id = 1;
+  string powerName = 2;
+}
+message UpdatePowerReq {
+  int32 id = 1;
+  string powerName = 2;
+  string description = 3;
+}
+
+message CreatePowerReq {
+  string powerName = 1;
+  string description = 2;
+}
+
+message PowerInfo {
+  int32 id = 1;
+  string powerName = 2;
+  string description = 3;
+}
+
+
+message GetRoleMenuInfoReq {
+  int32 id = 1;
+  int32 roleId = 2;
+  int32 menuId = 3;
+}
+
+
+message GetRoleMenuListReq {
+  int32 page = 1;
+  int32 limit = 2;
+  int32 roleId = 3;
+  int32 menuId = 4;
+}
+
+message GetRoleMenuListRes {
+  repeated RoleMenuInfo data = 1;
+  int32 total = 2;
+}
+
+message DeleteRoleMenuReq {
+  int32 id = 1;
+  int32 roleId = 2;
+  int32 menuId = 3;
+}
+
+message UpdateRoleMenuReq {
+  int32 id = 1;
+  int32 roleId = 2;
+  int32 menuId = 3;
+}
+
+message CreateRoleMenuReq {
+  int32 roleId = 1;
+  int32 menuId = 2;
+}
+
+message RoleMenuInfo {
+  int32 id = 1;
+  int32 roleId = 2;
+  int32 menuId = 3;
+}
+
+message GetMenuInfoReq {
+  int32 id = 1;
+  string menuName = 2;
+  int32 parentId = 3;
+}
+
+message GetMenuListReq {
+  int32 page = 1;
+  int32 limit = 2;
+  string menuName = 3;
+  int32 parentId = 4;
+}
+
+message GetMenuListRes {
+  repeated MenuInfo data = 1;
+  int32 total = 2;
+}
+
+message UpdateMenuReq {
+  int32 id = 1;
+  string menuName = 2;
+  int32 parentId = 3;
+}
+
+message DeleteMenuReq {
+  int32 id = 1;
+  string menuName = 2;
+}
+
+message CreateMenuReq {
+  string menuName = 1;
+  int32 parentId = 2;
+}
+
+message MenuInfo {
+  int32 id = 1;
+  string menuName = 2;
+  int32 parentId  = 3;
+}
+
+message GetUserRoleInfoReq {
+  int32 id = 1;
+  int32 userId = 2;
+  int32 roleId = 3;
+}
+
+message GetUserRoleListReq {
+  int32 page = 1;
+  int32 limit = 2;
+  int32 userId = 3;
+}
+
+message GetUserRoleListRes {
+  repeated UserRoleInfo data = 1;
+  int32 total = 2;
+}
+
+message UpdateUserRoleReq {
+  int32 id = 1;
+  int32 roleId = 2;
+  int32 userId = 3;
+}
+
+message DeleteUserRoleReq {
+  int32 id = 1;
+  int32 roleId = 2;
+  int32 userId = 3;
+}
+
+message CreateUserRoleReq {
+  int32 roleId = 1;
+  int32 userId = 2;
+}
+
+message UserRoleInfo {
+  int32 id = 1;
+  int32 roleId = 2;
+  int32 userId = 3;
+}
+
+
+message GetRoleInfoReq {
+  int32 id = 1;
+  string roleName = 2;
+}
+
+message GetRoleListReq {
+  int32 page = 1;
+  int32 limit = 2;
+}
+message GetRoleListRes {
+  repeated RoleInfo data = 1;
+  int32 total = 2;
+}
+
+message UpdateRoleReq {
+  int32 id = 1;
+  string roleName = 2;
+}
+
+message DeleteRoleReq {
+  int32 id = 1;
+}
+
+message Empty {}
+
+
+message CreateRoleReq {
+  string roleName = 1;
+}
+message RoleInfo {
+  int32  id = 1;
+  string roleName = 2;
+}
+
 
 message GetUserReq {
   int32 id = 1;
@@ -35,7 +345,7 @@ message GetUserRes {
   int64   age = 5;
   int32   sex = 6;
   int32   pid = 7;
-  float commission  = 8;
+  float   commission  = 8;
 }
 
 
